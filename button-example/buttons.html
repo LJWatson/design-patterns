@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+    <title>Button examples</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/basic.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <script type="text/javascript" src="js/button1.js"></script>
+    <script type="text/javascript" src="js/button2.js"\></script>
+</head>
+
+<body>
+    <h1>Button example</h1>
+
+    <p>The buttons on this page have been created by re-purposing <a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-span-element">span</a> elements, with scripting to provide the intended behaviour. At first glance they appear to be the same: both change appearance when hovered over with a mouse, and both change appearance when clicked on. That is where the similarities end however.</p>
+
+    <h2>Button 1</h2>
+
+    <div>
+        <span id="button1" class="default" onclick="javascript:toggleButton1(event);">Button 1</span>
+    </div>
+
+    <h3>Button 1 notes</h3>
+
+    <p>The span element is semantically neutral. It has no implicit role that informs assistive technologies what the control's purpose is. In other words, there is nothing to indicate to assistive technologies that Button 1 is a button. It is simply treated as plain text content.</p>
+
+    <p>The span element is not <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html">natively interactive</a>, so Button 1 can't be focused on with a keyboard (or targeted with speech recognition tools).</p>
+
+    <p>Button 1 can be focused on with a screen reader (using the <a href="http://tink.co.uk/2014/09/understanding-screen-reader-interaction-modes/">virtual cursor</a> or equivalent), but it cannot be activated with the keyboard (whether a screen reader is running or not). The enter key does nothing, and the space key fires its default action - scrolling the page.</p>
+
+    <p>The change in state of Button 1 is purely cosmetic. There is no programmatic indication, meaning that screen reader users remain oblivious to the button's current state.</p>
+
+    <h2>Button 2</h2>
+
+    <div>
+        <span id="button2" tabindex="0" role="button" aria-pressed="false" onclick="javascript:toggleButton2(event);" onkeyup="handleBtnKeyUp(event);">Button 2</span>
+    </div>
+
+    <h3>Button 2 notes</h3>
+
+    <p>The ARIA <a href="http://www.w3.org/TR/wai-aria/roles">role</a> attribute is used to give Button 2 semantic purpose. The <a href="www.w3.org/TR/wai-aria/roles">button</a> value informs the browser that it should expose the control as a button through its accessibility API. This information is utilised by assistive technologies (like screen readers) to inform the user what they're dealing with.</p>
+
+    <p>The <a href="http://www.w3.org/html/wg/drafts/html/master/editing.html#the-tabindex-attribute">tabindex</a> attribute is used to make Button 2 keyboard focusable. The 0 value places the button into the tab order based on its location within the source order. The visual appearance of Button 2 also changes when it receives keyboard focus. More information on <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">using the tabindex attribute</a>.</p>
+
+    <p>Keyboard interaction for Button 2 is handled through scripting. Both enter and space key events are captured, and used to trigger the button's expected behaviour.</p>
+
+    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed">aria-pressed</a> attribute is used to indicate the state of Button 2. It is set to false initially, then scripted to toggle between true/false whenever the button is activated.</p>
+
+    <p>The visual appearance of Button 2 when pressed (or not) is hooked onto the aria-pressed attribute using an <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors/">intelligent CSS selector</a>, instead of a class name. Although this does not affect accessibility, it creates a cleaner separation between structure and design.</p>
+
+</body>
+</html>
