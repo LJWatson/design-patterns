@@ -1,4 +1,4 @@
-function fetchResource1(event)
+function fetchResource(event)
 {
 	window.location.href = 'http://w3.org/';
 }

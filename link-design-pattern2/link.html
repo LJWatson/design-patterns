@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Accessible link design pattern</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/link.css">
+<script src="js/link.js"></script>
+</head>
+
+<body>
+<h1>Accessible link design pattern</h1>
+
+<p>The link on this page has been created using a <code>&lt;span&gt;</code> element, with scripting to provide the expected behaviour. This design pattern also includes accessibility features.</p>
+<p><strong>Note:</strong> When using HTML use the <code>&lt;a&gt;</code> element. Do not re-purpose other elements to create links.</p>
+
+<h2>Link example</h2>
+
+<div id="example">
+<span tabindex="0" role="link" onclick="fetchResource(event);" onkeyup="handleLinkKeyUp(event);">W3C website</span>
+</div>
+
+<h2>Link code</h2>
+
+<div>
+<pre><code>
+&lt;span tabindex="0" role="link" onclick="fetchResource(event);" onkeyup="handleLinkKeyUp(event);"&gt;W3C website&lt;/span&gt;
+</code></pre>
+</div>
+
+<h2>Link notes</h2>
+
+<p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles">role attribute</a> with a value of <a href="http://www.w3.org/TR/wai-aria/roles#link">link</a>. This informs the browser that it should expose the link as a link through its accessibility API.</p>
+
+<p>Uses the HTML <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">
+tabindex attribute</a> with a value of 0. This places the link into the tab order based on its location in the source order. The visual appearance of the link also changes when focus moves to it.</p>
+
+<p>Keyboard interaction for the link is provided through scripting. The enter key event is captured, and used to trigger the link's expected behaviour.</p>
+
+<p>Based on the <a href="http://www.w3.org/TR/wai-aria-practices/#link">link design pattern</a> from the <a href="http://www.w3.org/TR/wai-aria-practices/">ARIA Authoring Practices Guide</a>.</p>
+
+</body>
+</html>

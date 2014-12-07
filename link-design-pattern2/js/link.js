@@ -1,4 +1,4 @@
-function fetchResource2(event)
+function fetchResource(event)
 {
 	window.location.href = 'http://w3.org/';
 }
@@ -10,7 +10,7 @@ function handleLinkKeyUp(event)
 	
 	if (event.keyCode === 13)
 	{
-		fetchResource2(event);
+		fetchResource(event);
 	}
 }
 

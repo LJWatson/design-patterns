@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Inaccessible link design pattern</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/link.css">
+<script src="js/links.js"></script>
+</head>
+
+<body>
+<h1>Inaccessible link design pattern</h1>
+
+<p>The link on this page has been created using a <code>&lt;span&gt;</code> element, with scripting to provide the expected behaviour. At first glance the link appears to function as expected, but this design pattern has serious accessibility flaws.</p>
+
+<p><strong>Note:</strong> When using HTML use the <code>&lt;a&gt;</code> element. Do not re-purpose other elements to create links.</p>
+
+<h2>Link example</h2>
+
+<div id="example">
+<span onclick="fetchResource(event);">W3C website</span>
+</div>
+
+<h2>Link code</h2>
+
+<div>
+<pre><code>
+&lt;span onclick="fetchResource(event);"&gt;W3C website&lt;/span&gt;
+</code></pre>
+</div>
+
+<h2>Link notes</h2>
+
+<p>The <code>&lt;span&gt;</code> element is semantically neutral. It has no implicit role that informs assistive technologies what the element's purpose is. In other words there is nothing to inform assistive technologies that the link is a link. It is simply treated as plain text.</p>
+
+<p>The <code>&lt;span&gt;</code> element is not a natively <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html">interactive element</a>. This means the link cannot be focused on with the keyboard or targeted by speech recognition tools.</p>
+
+<p>The link can be focused on with a screen reader using its <a href="http://tink.co.uk/2014/09/understanding-screen-reader-interaction-modes/">virtual cursor</a> (or equivalent), but cannot be activated using the keyboard.</p>
+
+</body>
+</html>
