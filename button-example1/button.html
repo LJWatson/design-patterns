@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<title>Inaccessible button example</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
+<script type="text/javascript" src="js/button.js"></script>
+</head>
+
+<body>
+<h1>Inaccessible button example</h1>
+
+<p>The button on this page has been created using a <code>&lt;span&gt;</code> element, with scripting to provide the expected behaviour. At first glance the button appears to function as expected, but this design pattern has serious accessibility flaws.</p>
+
+<h2>Button example</h2>
+
+<div id="example">
+<span id="button" class="default" onclick="javascript:toggleButton(event);">Foo</span>
+</div>
+
+<h2>Button code</h2>
+
+<div>
+<pre><code>
+&lt;span id="button" class="default" onclick="javascript:toggleButton(event);"&gt;Foo&lt;/span&gt;
+</code></pre>
+</div>
+
+<h2>Button notes</h2>
+
+<p>The <code>&lt;span&gt;</code> element is semantically neutral. It has no implicit role that informs assistive technologies what the control's purpose is. In other words, there is nothing to indicate to assistive technologies that the button is a button. It is simply treated as plain text.</p>
+
+<p>The <code>&lt;span&gt;</code> element is not a natively <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html">interactive element</a>, so the button can't be focused on with a keyboard or targeted with speech recognition tools.</p>
+
+<p>The button can be focused on with a screen reader (using its <a href="http://tink.co.uk/2014/09/understanding-screen-reader-interaction-modes/">virtual cursor</a> (or equivalent)), but it cannot be activated with the keyboard. The enter key does nothing, and the space key fires its default action - scrolling the page.</p>
+
+<p>The change in state of the button is purely cosmetic. There is no programmatic indication, meaning that screen reader users remain oblivious to the button's current state.</p>
+
+</body>
+</html>

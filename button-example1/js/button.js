@@ -1,8 +1,8 @@
-function toggleButton1(event)
+function toggleButton(event)
 {
-	var button = document.getElementById("button1");
-	
-	if(button.getAttribute("class") == "default")
+	var button = document.getElementById("button");
+
+    if(button.getAttribute("class") == "default")
 	{
 		button.setAttribute("class", "pressed");
 	}
