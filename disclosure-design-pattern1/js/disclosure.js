@@ -1,4 +1,4 @@
-function toggleContent(event)
+function toggleContent()
 {
 	var button = document.getElementById("button");
 	var content = document.getElementById("content");
