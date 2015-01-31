@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Toggle button: span element</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/basic.css" />
+    <link rel="stylesheet" type="text/css" href="css/button.css" />
+    <script type="text/javascript" src="js/button.js"></script>
+</head>
+
+<body>
+    <h1>Toggle button: span element</h1>
+
+    <p>The toggle button on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-span-element"><code>&lt;span&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
+
+    <h2>Example</h2>
+
+    <div id="example">
+        <span id="button" tabindex="0" role="button" aria-pressed="false">Foo</span>
+    </div>
+
+    <h2>Code</h2>
+
+    <h3>HTML</h3>
+    <pre>
+<code>
+        &lt;span id=&quot;button&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-pressed=&quot;false&quot;&gt;Foo&lt;/span&gt;
+
+</code>
+</pre>
+
+    <h3>JavaScript</h3>
+    <pre>
+<code>
+function init()
+{
+        document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, toggleButton);
+        document.getElementById(&quot;button&quot;).addEventListener(&quot;keydown&quot;, toggleButton);
+}
+
+function toggleButton(event)
+{
+        var button = document.getElementById(&quot;button&quot;);
+        var type = event.type;
+        
+        if (type === &#39;keydown&#39; &amp;&amp; (event.keyCode !== 13 &amp;&amp; event.keyCode !== 32))
+        {
+                return true
+        }
+
+        if(button.getAttribute(&quot;aria-pressed&quot;) == &quot;false&quot;)
+        {
+                button.setAttribute(&quot;aria-pressed&quot;, &quot;true&quot;);
+        }
+        else
+        {
+                button.setAttribute(&quot;aria-pressed&quot;, &quot;false&quot;);
+        }
+
+        event.preventDefault();
+}
+
+window.onload = init;
+</code>
+</pre>
+
+    <h2>Notes</h2>
+
+    <p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles">role attribute</a> with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This informs the browser that it should expose the <code>&lt;span&gt;</code> element as a button through its accessibility API. This information is utilised by assistive technologies to inform users what they&#39;re dealing with.</p>
+
+    <p>Uses the HTML <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">tabindex attribute</a> with a value of 0. This places the button into the tab order based on its location in the source order. The visual appearance of the button changes when focus moves to it.</p>
+
+    <p>Keyboard interaction for the button is handled through scripting. Both enter and space key events are captured, and used to trigger the button&#39;s expected behaviour.</p>
+
+    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed">aria-pressed</a> attribute is used to indicate the state of the button. It is set to false initially, then scripted to toggle between true/false whenever the button is activated.</p>
+
+    <p>The visual appearance of the button when pressed (or not) is hooked onto the aria-pressed attribute using an <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors/">intelligent CSS selector</a>, instead of a class name. Although this does not affect accessibility, it creates a cleaner separation between structure and design.</p>
+</body>
+</html>

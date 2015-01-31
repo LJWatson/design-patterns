@@ -1,7 +1,7 @@
-span 
+button 
 {
     display: block;
-	height: 20px;
+	height: 35px;
 	width: 100px;
     font-size: 1.1em;
     font-weight: bold;
@@ -15,11 +15,12 @@ span
     box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
 }
 
-span:hover, span:focus 
+button:hover, button:focus 
 {
     background-color: #333;
 }
-.pressed 
+
+[aria-pressed="true"] 
 {
     color: #fff;
     text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;

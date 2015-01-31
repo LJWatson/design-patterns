@@ -1,3 +1,8 @@
+function init()
+{
+	document.getElementById("button").addEventListener("click", toggleButton);
+}
+
 function toggleButton(event)
 {
 	var button = document.getElementById("button");
@@ -9,17 +14,6 @@ function toggleButton(event)
 	else
 	{
 		button.setAttribute("aria-pressed", "false");
-	}
-}
-
-// Check if the Space (key code 32) or enter (key code 13) have been pressed
-function handleBtnKeyUp(event)
-{
-	event = event || window.event;
-	
-	if ((event.keyCode === 32) || (event.keyCode === 13))
-	{
-		toggleButton2(event);
 	}
 }
 
