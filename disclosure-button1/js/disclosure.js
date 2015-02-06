@@ -1,4 +1,9 @@
-function toggleContent()
+function init()
+{
+	document.getElementById("button").addEventListener("click", toggleDisclosure);
+}
+
+function toggleDisclosure(event)
 {
 	var button = document.getElementById("button");
 	var content = document.getElementById("content");
