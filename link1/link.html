@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>Link design pattern</title>
+    <title>Link: span element</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/basic.css" />
     <link rel="stylesheet" type="text/css" href="css/link.css" />
@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <h1>Link design pattern</h1>
+<h1>Link: span element</h1>
 
-    <p>The example on this page is based on the Link design pattern in the <a href="https://rawgit.com/w3c/aria/master/practices/aria-practices.html">ARIA 1.1 Authoring Practices Guide</a>.</p>
+    <p>The link on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-span-element"><code>&lt;span&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
 
-    <p><strong>Note:</strong> When using HTML use the <code>&lt;a&gt;</code> element. Do not re-purpose other elements to create links.</p>
+	<p role="note">It is always better to use the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-a-element"><code>&lt;a&gt;</code></a> element. The example on this page should only be used to repair legacy code that cannot be replaced.</p>
 
     <h2>Example</h2>
 
