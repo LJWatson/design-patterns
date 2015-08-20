@@ -1,20 +1,46 @@
-function init()
+(function ()
 {
-	document.getElementById("link").addEventListener("click", fetchResource);
-	document.getElementById("link").addEventListener("keydown", fetchResource);
-}
 
-function fetchResource(event)
-{
-	var type = event.type;
-	
-	if (type === "keydown" && event.keyCode !== 13)
+	function makeLinks ()
 	{
-		return true
+		//Put JS into strict mode.
+		'use strict';
+		
+		// Add foreach capability.
+		if (typeof NodeList.prototype.forEach === 'undefined')
+		{
+			NodeList.prototype.forEach = Array.prototype.forEach;
+		}
+		
+		// Get all elements with data-arialink attribute.
+		var links = document.querySelectorAll('[data-arialink]');
+		
+		var fetchResource =  function (e)
+		{
+			
+			//Listen for keydown events and capture the senter key.
+			if (e.type === "keydown" && e.keyCode !== 13) 
+			{
+				return false;
+			}
+			
+			e.preventDefault();
+			
+			window.location.href = e.target.dataset.arialink;
+		};
+
+		//Iterate through links to add a11y and interaction support.
+		links.forEach(function (link)
+		{
+			link.tabIndex = '0';
+			link.setAttribute('role', 'link');
+			link.addEventListener("click", fetchResource);
+			link.addEventListener("keydown", fetchResource);
+		});
 	}
-
-	window.location.href = 'http://w3.org/';
-	event.preventDefault();
-}
-
-window.onload = init;
+	
+	document.addEventListener('DOMContentLoaded', function ()
+	{
+		makeLinks();
+	});
+})();
