@@ -23,16 +23,20 @@
     color: #fff;
     text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
     box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
+	cursor: pointer;
 }
 
 [role="button"][aria-expanded="false"] #icon:after 
 {
-    content: ' ›';
+    font-size: 0.75em;
+	padding-left: 0.5em;
+	content: "\25BC";
 }
 
 [role="button"][aria-expanded="true"] #icon:after 
 {
-    content: ' ×';
+    font-size: 0.75em;
+	padding-left: 0.5em;content: "\25B2";
 }
 
 /* content panel */

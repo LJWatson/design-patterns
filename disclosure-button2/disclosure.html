@@ -2,85 +2,80 @@
 
 <html lang="en">
 <head>
-    <title>Disclosure button: span element</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/basic.css" />
-    <link rel="stylesheet" type="text/css" href="css/disclosure.css" />
-    <script type="text/javascript" src="js/disclosure.js"></script>
+<title>Disclosure button: span element</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link rel="stylesheet" type="text/css" href="css/disclosure.css" />
+<script type="text/javascript" src="js/disclosure.js"></script>
 </head>
 
 <body>
-    <h1>Disclosure button: span element</h1>
+<h1>Disclosure button: span element</h1>
 
-    <p>The disclosure button on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-span-element"><code>&lt;span&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
+<p>The disclosure button on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-span-element"><code>&lt;span&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
 
-<p role="note">It is always better to use the <a href="http://www.w3.org/TR/html/Overview.html#contents"><code>&lt;button&gt;</code></a> element. The example on this page should only be used to repair legacy code that cannot be replaced.</p>
+<h2>Example</h2>
 
-    <h2>Example</h2>
+<div id="example">
+<span id="button" tabindex="0" role="button" aria-expanded="false" aria-controls="content">Foo <span id="icon" aria-hidden="true"></span></span>
 
-    <div id="example">
-        <span id="button" tabindex="0" role="button" aria-expanded="false" aria-controls="content">Foo <span id="icon" aria-hidden="true"></span></span>
+<div id="content" aria-hidden="true">
+Lorem ipsum dolar sit amet...
+</div>
+</div>
 
-        <div id="content" aria-hidden="true">
-            Lorem ipsum dolar sit amet...
-        </div>
-    </div>
+<h2>Code</h2>
 
-    <h2>Code</h2>
+<h3>HTML</h3>
 
-    <h3>HTML</h3>
-    <pre>
-<code>
+<pre><code>
 &lt;span id=&quot;button&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;content&quot;&gt;Foo &lt;span id=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/span&gt;
 
 &lt;div id=&quot;content&quot; aria-hidden=&quot;true&quot;&gt;
 &lt;p&gt;Lorem ipsum dolar sit amet...&lt;/p&gt;
 &lt;/div&gt;
-</code>
-</pre>
+</code></pre>
 
-    <h3>JavaScript</h3>
-    <pre>
-<code>
+<h3>JavaScript</h3>
+
+<pre><code>
 function init()
 {
-        document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, toggleDisclosure);
-        document.getElementById(&quot;button&quot;).addEventListener(&quot;keydown&quot;, toggleDisclosure);
+	document.getElementById("button").addEventListener("click", toggleDisclosure);
+	document.getElementById("button").addEventListener("keydown", toggleDisclosure);
 }
 
 function toggleDisclosure(event)
 {
-        var type = event.type;
-        var button = document.getElementById(&quot;button&quot;);
-        var content = document.getElementById(&quot;content&quot;);
+	var type = event.type;
+	var button = document.getElementById("button");
+	var content = document.getElementById("content");
 
-        if (type === &quot;keydown&quot; &amp;&amp; (event.keyCode !== 13 &amp;&amp; event.keyCode !== 32))
-        {
-                return true
-        }
+	if (type === "keydown" && (event.keyCode !== 13 && event.keyCode !== 32))
+	{
+		return true
+	}
 
-    if(content.getAttribute(&quot;aria-hidden&quot;) == &quot;true&quot;)
-        {
-                content.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;);
-                button.setAttribute(&quot;aria-expanded&quot;, &quot;true&quot;);
-        }
-        else
-        {
-                content.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;);
-                button.setAttribute(&quot;aria-expanded&quot;, &quot;false&quot;);
-        }
+    if(content.getAttribute("aria-hidden") == "true")
+	{
+		content.setAttribute("aria-hidden", "false");
+		button.setAttribute("aria-expanded", "true");
+	}
+	else
+	{
+		content.setAttribute("aria-hidden", "true");
+		button.setAttribute("aria-expanded", "false");
+	}
 
-        event.preventDefault();
+	event.preventDefault();
 }
 
 window.onload = init;
-</code>
-</pre>
+</code></pre>
 
 <h3>CSS</h3>
 
-<pre>
-<code>
+<pre><code>
 /* button */
 
 [role="button"] 
@@ -106,16 +101,20 @@ window.onload = init;
     color: #fff;
     text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
     box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
+	cursor: pointer;
 }
 
 [role="button"][aria-expanded="false"] #icon:after 
 {
-    content: ' ›';
+    font-size: 0.75em;
+	padding-left: 0.5em;
+	content: "\25BC";
 }
 
 [role="button"][aria-expanded="true"] #icon:after 
 {
-    content: ' ×';
+    font-size: 0.75em;
+	padding-left: 0.5em;content: "\25B2";
 }
 
 /* content panel */
@@ -133,26 +132,25 @@ div[aria-hidden="false"]
     background: #555;
     color: #FFF;
 }
-</code>
-</pre>
+</code></pre>
 
-    <h2>Notes</h2>
+<h2>Notes</h2>
 
-    <p>Uses the HTML <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/"><code>tabindex</code></a> attribute with a value of 0. This places the <code>&lt;span&gt;</code> into the tab order based on its location in the source code. The visual appearance of the button changes when focus moves to it.</p>
+<p>Uses the HTML <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/"><code>tabindex</code></a> attribute with a value of 0. This places the <code>&lt;span&gt;</code> into the tab order based on its location in the source code. The visual appearance of the button changes when focus moves to it.</p>
 
-    <p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles"><code>role</code></a> attribute with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This instructs the browser to expose the <code>&lt;span&gt;</code> element as a button through its accessibility API. This information is used by assistive technologies to inform users what they&#39;re dealing with.</p>
+<p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles"><code>role</code></a> attribute with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This instructs the browser to expose the <code>&lt;span&gt;</code> element as a button through its accessibility API. This information is used by assistive technologies to inform users what they&#39;re dealing with.</p>
 
-    <p>Keyboard interaction for the button control is handled through scripting. Both enter and space key events are captured, and used to trigger the button&#39;s expected behaviour.</p>
+<p>Keyboard interaction for the button control is handled through scripting. Both enter and space key events are captured, and used to trigger the button&#39;s expected behaviour.</p>
 
-    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded"><code>aria-expanded</code></a> attribute is used to indicate the state of the disclosure widget. It is applied to the <code>&lt;span&gt;</code> so that assistive technologies can determine the state of the widget whether it is expanded or collapsed. The <code>aria-expanded</code> attribute is set to false (collapsed) initially, then scripted to toggle between true and false whenever the button is activated.</p>
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded"><code>aria-expanded</code></a> attribute is used to indicate the state of the disclosure widget. It is applied to the <code>&lt;span&gt;</code> so that assistive technologies can determine the state of the widget whether it is expanded or collapsed. The <code>aria-expanded</code> attribute is set to false (collapsed) initially, then scripted to toggle between true and false whenever the button is activated.</p>
 
-    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls"><code>aria-controls</code></a> attribute is used to create a relationship between the <code>&lt;span&gt;</code> and the <code>&lt;div&gt;</code> that contains the content. It takes the idref of the <code>&lt;div&gt;</code> as its value. This enables assistive technologies to provide specific commands for moving focus from the <code>&lt;span&gt;</code> to the <code>&lt;div&gt;</code>.</p>
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls"><code>aria-controls</code></a> attribute is used to create a relationship between the <code>&lt;span&gt;</code> and the <code>&lt;div&gt;</code> that contains the content. It takes the idref of the <code>&lt;div&gt;</code> as its value. This enables assistive technologies to provide specific commands for moving focus from the <code>&lt;span&gt;</code> to the <code>&lt;div&gt;</code>.</p>
 
-    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden</code></a> attribute indicates the state of the <code>&lt;span&gt;</code> that holds the icon, and the <code>&lt;div&gt;</code> containing the content. The <code>aria-hidden</code> attribute removes the element from the accessibility tree. It is permenantly set to "true" on the icon <code>&lt;span&gt;</code> because there is no need for assistive technologies to be aware of it. On the <code>&lt;div&gt;</code> containing the content, it is set to true (hidden) initially, then scripted to toggle between false and true whenever the button is activated.</p>
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden</code></a> attribute indicates the state of the <code>&lt;span&gt;</code> that holds the icon, and the <code>&lt;div&gt;</code> containing the content. The <code>aria-hidden</code> attribute removes the element from the accessibility tree. It is permenantly set to "true" on the icon <code>&lt;span&gt;</code> because there is no need for assistive technologies to be aware of it. On the <code>&lt;div&gt;</code> containing the content, it is set to true (hidden) initially, then scripted to toggle between false and true whenever the button is activated.</p>
 
-    <p>The visible style of the <code>&lt;button&gt;</code> when pressed is hooked to the <code>aria-expanded</code> attribute. Similarly the visibility of the <code>&lt;div&gt;</code> is hooked to the <code>aria-hidden</code> attribute using <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors">CSS selectors</a>. This has no direct impact on accessibility, but it creates a cleaner separation between structure and design.</p>
+<p>The visible style of the <code>&lt;button&gt;</code> when pressed is hooked to the <code>aria-expanded</code> attribute. Similarly the visibility of the <code>&lt;div&gt;</code> is hooked to the <code>aria-hidden</code> attribute using <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors">CSS selectors</a>. This has no direct impact on accessibility, but it creates a cleaner separation between structure and design.</p>
 
-	<p><strong>Note:</strong> There is an issue with Firefox, where content with <code>aria-hidden</code> is exposed to assistive technologies when inside a <code>&lt;button&gt;</code> or an element with <code>role="button"</code> applied. Refer to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1147359">bug 1147359</a> for more information.</p>
+<p><strong>Note:</strong> There is an issue with Firefox, where content with <code>aria-hidden</code> is exposed to assistive technologies when inside a <code>&lt;button&gt;</code> or an element with <code>role="button"</code> applied. Refer to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1147359">bug 1147359</a> for more information.</p>
 
 </body>
 </html>
