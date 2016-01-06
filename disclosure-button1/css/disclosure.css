@@ -32,7 +32,7 @@ button[aria-expanded="false"] #icon:after
 
 button[aria-expanded="true"] #icon:after 
 {
-    content: "\25BC";
+    content: "\25B2";
 }
 
 /* content panel */
