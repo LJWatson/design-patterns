@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ToggleTip</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" href="css/toggletip.css">
+</head>
+
+<body>
+<h1>ToggleTip</h1>
+
+
+<p>This toggletip is based on the design pattern first proposed by <a href="https://www.paciellogroup.com/blog/2016/01/simple-standalone-toggletip-widget-pattern/">Steve Faulkner</a>.</p>
+
+<p>The toggletip uses a <a href="http://w3c.github.io/html/sec-forms.html#the-button-element"><code>&lt;button&gt;</code></a> element as a trigger, and the <a href="http://w3c.github.io/html/sections.html#the-aside-element"><code>&lt;aside&gt;</code></a> element as the container for the tip. Additional semantic information is provided with <a href="https://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
+ 
+<h2>Example</h2>
+
+<div class="example">
+<button id="button">
+<img src="img/i.png" alt="information">
+</button>
+
+<aside id="tip"></aside>
+  <!-- <i>Some text</i> next to the button that could be anything as is unrelated to the pattern.-->
+</div>
+
+<script src="js/toggletip.js"></script>
+</body>
+</html>
