@@ -1,39 +1,47 @@
-var tip = document.getElementById('tip');
-var button = document.getElementById('button');
+(function () {
 
-button.setAttribute('role', 'button');
-button.setAttribute('tabindex', '0');
-button.setAttribute('aria-expanded', 'false');
-button.setAttribute('aria-describedby', 'tip');
-tip.setAttribute('hidden', true);
+	var tip = document.getElementById('tip');
+	var button = document.getElementById('button');
+	var content = document.getElementById('content');
 
-function toggleTip(e) {
+	button.setAttribute('role', 'button');
+	button.setAttribute('tabindex', '0');
+	button.setAttribute('aria-expanded', 'false');
+	button.setAttribute('aria-describedby', 'tip');
+
+	tip.setAttribute('role', 'complementary');
+	tip.setAttribute('hidden', true);
+
+	content.setAttribute('role', 'tooltip');
+	content.setAttribute('aria-live', 'polite');
+
+	function toggleTip(e) {
 
     if (tip.hasAttribute('hidden')) {
-        button.setAttribute('aria-expanded', 'true');
-        tip.innerHTML = " <span role='tooltip' aria-live='polite'>Tequila         (makes me happy)!</span>";
-        tip.setAttribute('role', 'complementary');
-        tip.removeAttribute('hidden');
-    } else {
-        button.setAttribute('aria-expanded', 'false');
-        tip.innerHTML = '';
-        tip.removeAttribute('role');
-        tip.setAttribute('hidden', true);
-    }
-}
+      button.setAttribute('aria-expanded', 'true');
+      content.innerHTML = "Makes me happy!";
+      tip.removeAttribute('hidden');
+  	} else {
+	    button.setAttribute('aria-expanded', 'false');
+		  content.innerHTML = '';
+		  tip.setAttribute('hidden', true);
+	  }
+	}
 
-button.addEventListener('click', toggleTip, false);
+	button.addEventListener('click', toggleTip, false);
 
-button.addEventListener('keydown', function(e) {
+	button.addEventListener('keydown', function(e) {
 
-    if (e.keyCode == 13 || e.keycode == 32) {
-        toggleTip();
-    }
-});
+	  if (e.keyCode == 13 || e.keycode == 32) {
+	    toggleTip();
+	  }
+	});
 
-document.addEventListener('keyup', function(e) {
+	document.addEventListener('keydown', function(e) {
 
-    if (e.keyCode == 27) {
-        toggleTip();
-    }
-});
+	  if (e.keyCode == 27) {
+	    toggleTip();
+	  }
+	});
+
+})();

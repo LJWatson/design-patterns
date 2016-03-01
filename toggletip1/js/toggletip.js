@@ -1,28 +1,37 @@
-var tip = document.getElementById('tip');
-var button = document.getElementById('button');
+(function () {
 
-button.setAttribute('aria-expanded', 'false');
-button.setAttribute('aria-describedby', 'tip');
-tip.setAttribute('hidden', true);
+	var button = document.getElementById('button');
+	var tip = document.getElementById('tip');
+	var content = document.getElementById('content');
 
-function toggleTip(e) {
+	button.setAttribute('aria-expanded', 'false');
+	button.setAttribute('aria-describedby', 'tip');
 
-    if (tip.hasAttribute('hidden')) {
-        button.setAttribute('aria-expanded', 'true');
-        tip.innerHTML = " <span role='tooltip' aria-live='polite'>Tequila         (makes me happy)!</span>";
-        tip.removeAttribute('hidden');
-    } else {
-        button.setAttribute('aria-expanded', 'false');
-        tip.innerHTML = '';
-        tip.setAttribute('hidden', true);
-    }
-}
+	tip.setAttribute('hidden', true);
 
-button.addEventListener('click', toggleTip, false);
+	content.setAttribute('role', 'tooltip');
+	content.setAttribute('aria-live', 'polite');
 
-document.addEventListener('keyup', function(e) {
+	function toggleTip(e) {
 
-    if (e.keyCode == 27) {
-        toggleTip();
-    }
-});
+	  if (tip.hasAttribute('hidden')) {
+	    button.setAttribute('aria-expanded', 'true');
+	    content.innerHTML = "Tequila         (makes me happy)!";
+	    tip.removeAttribute('hidden');
+		} else {
+	    button.setAttribute('aria-expanded', 'false');
+	    content.innerHTML = '';
+	    tip.setAttribute('hidden', true);
+		}
+	}
+
+	button.addEventListener('click', toggleTip, false);
+
+	document.addEventListener('keydown', function(e) {
+
+	  if (e.keyCode == 27) {
+	    toggleTip();
+	  }
+	});
+
+})();
