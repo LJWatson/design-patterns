@@ -10,12 +10,12 @@ span[id="button"] {
     background-color: #555;
     border: 0 none;
     border-radius: 3px;
-    text-shadow: 0 -1px 0 #000;
     box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
 }
 
 span[id="button"]:hover, span[id="button"]:focus {
-    background-color: #333;
+    background-color: #fc0;
+	color: #555;
 }
 
 [aria-expanded"true"] {
@@ -34,6 +34,5 @@ span[role="tooltip"] {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
     width: 14m;
-    font-size:.8em;
 }
 
