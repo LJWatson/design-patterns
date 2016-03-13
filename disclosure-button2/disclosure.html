@@ -1,138 +1,33 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Disclosure button: span element</title>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width">
+<title>Disclosure button design pattern: &lt;span&gt; element</title>
+
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
 <link rel="stylesheet" type="text/css" href="css/disclosure.css" />
 <script type="text/javascript" src="js/disclosure.js"></script>
 </head>
 
 <body>
-<h1>Disclosure button: span element</h1>
+<h1>Disclosure button design pattern: <code>&lt;span&gt;</code> element</h1>
 
-<p>The disclosure button on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-span-element"><code>&lt;span&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
+<p>This disclosure button is created using the <code>&lt;span&gt;</code> element, with scripting to provide the expected behaviour. Additional semantic information is provided using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
+
+<p role="note">It is better to use the <a href="../disclosure-button1/disclosure.html"><code>&lt;button&gt;</code> element</a> to create a disclosure button because the browser will automatically provide keyboard support and most semantic information.</p>
 
 <h2>Example</h2>
 
-<div id="example">
+<div class="example">
 <span id="button" tabindex="0" role="button" aria-expanded="false" aria-controls="content">Foo <span id="icon" aria-hidden="true"></span></span>
 
 <div id="content" aria-hidden="true">
 Lorem ipsum dolar sit amet...
 </div>
 </div>
-
-<h2>Code</h2>
-
-<h3>HTML</h3>
-
-<pre><code>
-&lt;span id=&quot;button&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;content&quot;&gt;Foo &lt;span id=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-
-&lt;div id=&quot;content&quot; aria-hidden=&quot;true&quot;&gt;
-&lt;p&gt;Lorem ipsum dolar sit amet...&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-
-<h3>JavaScript</h3>
-
-<pre><code>
-function init()
-{
-	document.getElementById("button").addEventListener("click", toggleDisclosure);
-	document.getElementById("button").addEventListener("keydown", toggleDisclosure);
-}
-
-function toggleDisclosure(event)
-{
-	var type = event.type;
-	var button = document.getElementById("button");
-	var content = document.getElementById("content");
-
-	if (type === "keydown" && (event.keyCode !== 13 && event.keyCode !== 32))
-	{
-		return true
-	}
-
-    if(content.getAttribute("aria-hidden") == "true")
-	{
-		content.setAttribute("aria-hidden", "false");
-		button.setAttribute("aria-expanded", "true");
-	}
-	else
-	{
-		content.setAttribute("aria-hidden", "true");
-		button.setAttribute("aria-expanded", "false");
-	}
-
-	event.preventDefault();
-}
-
-window.onload = init;
-</code></pre>
-
-<h3>CSS</h3>
-
-<pre><code>
-/* button */
-
-[role="button"] 
-{
-    display: block;
-	height: 20px;
-	width: 100px;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 10px 15px;
-    margin 20px auto;
-    color: #ccc;
-    background-color: #555;
-    border: 0 none;
-    border-radius: 3px;
-    text-shadow: 0 -1px 0 #000;
-    box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
-}
-
-[role="button"]:hover, [role="button"]:focus 
-{
-    background-color: #333;
-    color: #fff;
-    text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
-    box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
-	cursor: pointer;
-}
-
-[role="button"][aria-expanded="false"] #icon:after 
-{
-    font-size: 0.75em;
-	padding-left: 0.5em;
-	content: "\25BC";
-}
-
-[role="button"][aria-expanded="true"] #icon:after 
-{
-    font-size: 0.75em;
-	padding-left: 0.5em;content: "\25B2";
-}
-
-/* content panel */
-
-div[aria-hidden="true"] 
-{
-    display: none;
-}
-
-div[aria-hidden="false"]
-{
-    display: block;
-    border: 1px #000 solid;
-    padding: 1em;
-    background: #555;
-    color: #FFF;
-}
-</code></pre>
 
 <h2>Notes</h2>
 

@@ -1,8 +1,7 @@
-a[id="button"] 
-{
+span[id="button"] {
     display: block;
-	height: 25px;
-	width: 75px;
+    height: 15px;
+    width: 60px;
     font-size: 1.1em;
     font-weight: bold;
     padding: 10px 15px;
@@ -15,14 +14,26 @@ a[id="button"]
     box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
 }
 
-a[id="button"]:hover, a[id="button"]:focus 
-{
+span[id="button"]:hover, span[id="button"]:focus {
     background-color: #333;
 }
 
-[aria-pressed="true"] 
-{
+[aria-expanded"true"] {
     color: #fff;
     text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
     box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
 }
+
+span[role="tooltip"] {
+    z-index:99;
+    display: block;
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    width: 14m;
+    font-size:.8em;
+}
+

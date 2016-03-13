@@ -4,21 +4,23 @@
 
 <head>
 <meta charset="utf-8">
-<title>Live region (assertive)</title>
+<meta name="viewport" content="width=device-width">
+<title>Live region design pattern</title>
 
 <link rel="stylesheet" type="text/css" href="css/basic.css">
-<script src="js/liveregion.js"></script>
 </head>
 
 <body>
-<h1>Live region (assertive)</h1>
+<h1>Live region design pattern</h1>
 
-<p>The notification on this page has been created using a <a href="http://drafts.htmlwg.org/html/master/grouping-content.html#the-div-element"><code>&lt;div&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
+<p>This live region is created using the <code>&lt;button&gt;</code> and <code>&lt;div&gt;</code> elements, with scripting to provide the expected behaviour. Additional semantic information is provided with <a href="https://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
 
 <h2>Example</h2>
 
-<div id="example">
+<div class="example">
+
 <h3>Basket summary</h3>
+
 <div aria-live="assertive" aria-atomic="true">
     <p>Your basket contains <span id="quantity">0</span> items.</p>
 </div>
@@ -26,41 +28,8 @@
 <div>
 <button id="button">Add to basket</button>
 </div>
+
 </div>
-
-<h2>Code</h2>
-
-<h3>HTML</h3>
-
-<pre><code>
-&lt;h3&gt;Basket summary&lt;/h3&gt;
-&lt;div aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
-&lt;p&gt;Your basket contains &lt;span id=&quot;quantity&quot;&gt;0&lt;/span&gt; items.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;button id=&quot;button&quot;&gt;Add to basket&lt;/button&gt;
-&lt;/div&gt;
-</code></pre>
-
-<h3>JavaScript</h3>
-
-<pre><code>
-var items = 0;
-
-function init()
-{	
-	document.getElementById("button").addEventListener("click", updateItems);
-}
-
-function updateItems(event)
-{
-	items = items + 1;
-	document.getElementById("quantity").innerHTML=items;
-}
-
-window.onload = init;
-</code></pre>
 
 <h2>Notes</h2>
 
@@ -69,6 +38,8 @@ window.onload = init;
 <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic"><code>aria-atomic</code></a> attribute has been used to define how much of the live region content should be announced. The value of <code>true</code> means that all the content in the live region will be announced, even when only part of the content has been updated.</p>
 
 <p>Notes on <a href="http://www.paciellogroup.com/blog/2014/03/screen-reader-support-aria-live-regions/">screen reader support for live regions</a> are available.</p>
+
+<script src="js/liveregion.js"></script>
 
 </body>
 </html>

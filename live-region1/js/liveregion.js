@@ -1,14 +1,12 @@
+(function () {
+'use strict';
+
+document.getElementById("button").addEventListener("click", updateItems);
+
 var items = 0;
 
-function init()
-{	
-	document.getElementById("button").addEventListener("click", updateItems);
+function updateItems (e) {
+items = items + 1;
+document.getElementById("quantity").innerHTML=items;
 }
-
-function updateItems(event)
-{
-	items = items + 1;
-	document.getElementById("quantity").innerHTML=items;
-}
-
-window.onload = init;
+})();

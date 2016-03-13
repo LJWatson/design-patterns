@@ -1,82 +1,40 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-    <title>Toggle button: a element</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/basic.css" />
-    <link rel="stylesheet" type="text/css" href="css/button.css" />
-    <script type="text/javascript" src="js/button.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width">
+<title>Toggle button design pattern: &lt;a&gt; element</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link rel="stylesheet" type="text/css" href="css/button.css" />
+<script type="text/javascript" src="js/button.js"></script>
 </head>
 
 <body>
-    <h1>Toggle button: a element</h1>
+<h1>Toggle button design pattern: <code>&lt;a&gt;</code> element</h1>
 
-    <p>The toggle button on this page has been created using the <a href="http://www.w3.org/TR/html/text-level-semantics.html#the-a-element"><code>&lt;a&gt;</code></a> element, with scripting to provide the expected behaviour. This design pattern uses <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> to polyfill accessibility.</p>
+<p>This toggle button is created using the <code>&lt;a&gt;</code> element, with scripting to provide the expected behaviour. Additional semantic information is provided using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
 
-	<p role="note">It is always better to use the <a href="http://www.w3.org/TR/html/Overview.html#contents"><code>&lt;button&gt;</code></a> element. The example on this page should only be used to repair legacy code that cannot be replaced.</p>
+<p role="note">It is better to use the <a href="../toggle-button1/button.html"><code>&lt;button&gt;</code> element</a> to create a toggle button because the browser automatically provides keyboard support and most semantic information.</p>
 
-    <h2>Example</h2>
+<h2>Example</h2>
 
-    <div id="example">
-        <a href="#" id="button" role="button" aria-pressed="false">Foo</a>
-    </div>
+<div class="example">
+<a href="#" id="button" role="button" aria-pressed="false">Foo</a>
+</div>
 
-    <h2>Code</h2>
+<h2>Notes</h2>
 
-    <h3>HTML</h3>
-    <pre>
-<code>
-        &lt;a href=&quot;#&quot; id=&quot;button&quot; role=&quot;button&quot; aria-pressed=&quot;false&quot;&gt;Foo&lt;/a&gt;
+<p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles">role attribute</a> with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This informs the browser that it should expose the <code>&lt;a&gt;</code> element as a button through its accessibility API. This information is utilised by assistive technologies to inform users what they&#39;re dealing with.</p>
 
-</code>
-</pre>
+<p>Keyboard focus is handled by the browser because <code>&lt;a&gt;</code> is an <a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive element</a>.</p>
 
-    <h3>JavaScript</h3>
-    <pre>
-<code>
-function init()
-{
-	document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, toggleButton);
-	document.getElementById(&quot;button&quot;).addEventListener(&quot;keydown&quot;, toggleButton);
-}
+<p>Keyboard interaction is handled by the browser and through scripting. The <code>&lt;a&gt;</code> element can be activated with the Enter key and the button inherits this behaviour. The ability to activate the button using the space key is provided through scripting.</p>
 
-function toggleButton(event)
-{
-	var button = document.getElementById(&quot;button&quot;);
-	var type = event.type;
-	
-	if (type === 'keydown' && (event.keyCode !== 13 && event.keyCode !== 32))
-	{
-		return true
-	}
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed">aria-pressed</a> attribute is used to indicate the state of the button. It is set to false initially, then scripted to toggle between true/false whenever the button is activated.</p>
 
-	if(button.getAttribute(&quot;aria-pressed&quot;) == &quot;false&quot;)
-	{
-		button.setAttribute(&quot;aria-pressed&quot;, &quot;true&quot;);
-	}
-	else
-	{
-		button.setAttribute(&quot;aria-pressed&quot;, &quot;false&quot;);
-	}
-
-	event.preventDefault();
-}
-
-window.onload = init;
-</code>
-</pre>
-
-    <h2>Notes</h2>
-
-    <p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles">role attribute</a> with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This informs the browser that it should expose the <code>&lt;a&gt;</code> element as a button through its accessibility API. This information is utilised by assistive technologies to inform users what they&#39;re dealing with.</p>
-
-    <p>Keyboard focus is handled by the browser because <code>&lt;a&gt;</code> is an <a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive element</a>.</p>
-
-    <p>Keyboard interaction is handled by the browser and through scripting. The <code>&lt;a&gt;</code> element can be activated with the Enter key and the button inherits this behaviour. The ability to activate the button using the space key is provided through scripting.</p>
-
-    <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed">aria-pressed</a> attribute is used to indicate the state of the button. It is set to false initially, then scripted to toggle between true/false whenever the button is activated.</p>
-
-    <p>The visual appearance of the button when pressed (or not) is hooked onto the aria-pressed attribute using an <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors/">intelligent CSS selector</a>, instead of a class name. Although this does not affect accessibility, it creates a cleaner separation between structure and design.</p>
+<p>The visual appearance of the button when pressed (or not) is hooked onto the aria-pressed attribute using an <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors/">intelligent CSS selector</a>, instead of a class name. Although this does not affect accessibility, it creates a cleaner separation between structure and design.</p>
 </body>
 </html>
