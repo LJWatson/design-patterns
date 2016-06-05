@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width">
+<title>Disclosure button design pattern: &lt;button&gt; element</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link rel="stylesheet" type="text/css" href="css/disclosure.css" />
+</head>
+
+<body>
+<h1>Disclosure button design pattern: <code>&lt;button&gt;</code> element</h1>
+
+<p>This disclosure button is created using the <code>&lt;button&gt;</code> element, with scripting to provide the expected behaviour. Additional semantic information is provided using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
+
+<h2>Example</h2>
+
+<div class="example">
+<button id="button">Tequila <span id="icon"></span></button>
+<div id="content">
+<p>Makes me happy!</p>
+</div>
+</div>
+
+<h2>Notes</h2>
+
+<p>Using the <code>&lt;button&gt;</code> element means the browser handles keyboard interaction automatically. The button can be focused on with the keyboard, and it can be activated using either the space or enter keys.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded"><code>aria-expanded</code></a> attribute is used to indicate the state of the disclosure widget. It is applied to the <code>&lt;button&gt;</code> so that assistive technologies can determine the state of the widget whether it is expanded or collapsed. The <code>aria-expanded</code> attribute is set to false (collapsed) initially, then scripted to toggle between true and false whenever the button is activated.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls"><code>aria-controls</code></a> attribute is used to create a relationship between the <code>&lt;button&gt;</code> and the <code>&lt;div&gt;</code> that contains the content. It takes the idref of the <code>&lt;div&gt;</code> as its value. This enables assistive technologies to provide specific commands for moving focus from the <code>&lt;button&gt;</code> to the <code>&lt;div&gt;</code>.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden</code></a> attribute indicates the state of the <code>&lt;div&gt;</code> containing the content. It is used regardless of the method used to toggle the content&#39;s visibility. The <code>aria-hidden</code> attribute is set to true (hidden) initially, then scripted to toggle between false and true whenever the button is activated.</p>
+
+<p>The visible style of the <code>&lt;button&gt;</code> when pressed is hooked to the <code>aria-expanded</code> attribute. Similarly the visibility of the <code>&lt;div&gt;</code> is hooked to the <code>aria-hidden</code> attribute using <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors">CSS selectors</a>. This has no direct impact on accessibility, but it creates a cleaner separation between structure and design.</p>
+
+<script type="text/javascript" src="js/disclosure.js"></script>
+</body>
+</html>

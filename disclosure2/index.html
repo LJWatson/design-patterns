@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width">
+<title>Disclosure button design pattern: &lt;a&gt; element</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link rel="stylesheet" type="text/css" href="css/disclosure.css" />
+</head>
+
+<body>
+<h1>Disclosure button design pattern: <code>&lt;a&gt;</code> element</h1>
+
+<p>This disclosure button is created using the <code>&lt;a&gt;</code> element, with scripting to provide the expected behaviour. Additional semantic information is provided using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
+
+<p role="note">It is better to use the <a href="../disclosure1/disclosure.html"><code>&lt;button&gt;</code> element</a> to create a disclosure button because the browser will automatically provide keyboard support and most semantic information.</p>
+
+<h2>Example</h2>
+
+<div class="example">
+<a href="#content" id="button">Tequila <span id="icon"></span></a>
+<div id="content">
+<p>Makes me happy!</p>
+</div>
+</div>
+
+<h2>Notes</h2>
+
+<p>Uses the HTML <a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/"><code>tabindex</code></a> attribute with a value of 0. This places the <code>&lt;span&gt;</code> into the tab order based on its location in the source code. The visual appearance of the button changes when focus moves to it.</p>
+
+<p>Uses the ARIA <a href="http://www.w3.org/TR/wai-aria/roles"><code>role</code></a> attribute with a value of <a href="http://www.w3.org/TR/wai-aria/roles#button">button</a>. This instructs the browser to expose the <code>&lt;span&gt;</code> element as a button through its accessibility API. This information is used by assistive technologies to inform users what they&#39;re dealing with.</p>
+
+<p>Keyboard interaction for the button control is handled through scripting. Both enter and space key events are captured, and used to trigger the button&#39;s expected behaviour.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded"><code>aria-expanded</code></a> attribute is used to indicate the state of the disclosure widget. It is applied to the <code>&lt;span&gt;</code> so that assistive technologies can determine the state of the widget whether it is expanded or collapsed. The <code>aria-expanded</code> attribute is set to false (collapsed) initially, then scripted to toggle between true and false whenever the button is activated.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls"><code>aria-controls</code></a> attribute is used to create a relationship between the <code>&lt;span&gt;</code> and the <code>&lt;div&gt;</code> that contains the content. It takes the idref of the <code>&lt;div&gt;</code> as its value. This enables assistive technologies to provide specific commands for moving focus from the <code>&lt;span&gt;</code> to the <code>&lt;div&gt;</code>.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden</code></a> attribute indicates the state of the <code>&lt;span&gt;</code> that holds the icon, and the <code>&lt;div&gt;</code> containing the content. The <code>aria-hidden</code> attribute removes the element from the accessibility tree. It is permenantly set to "true" on the icon <code>&lt;span&gt;</code> because there is no need for assistive technologies to be aware of it. On the <code>&lt;div&gt;</code> containing the content, it is set to true (hidden) initially, then scripted to toggle between false and true whenever the button is activated.</p>
+
+<p>The visible style of the <code>&lt;button&gt;</code> when pressed is hooked to the <code>aria-expanded</code> attribute. Similarly the visibility of the <code>&lt;div&gt;</code> is hooked to the <code>aria-hidden</code> attribute using <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors">CSS selectors</a>. This has no direct impact on accessibility, but it creates a cleaner separation between structure and design.</p>
+
+<p><strong>Note:</strong> There is an issue with Firefox, where content with <code>aria-hidden</code> is exposed to assistive technologies when inside a <code>&lt;button&gt;</code> or an element with <code>role="button"</code> applied. Refer to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1147359">bug 1147359</a> for more information.</p>
+
+<script type="text/javascript" src="js/disclosure.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width">
+<title>Toggle button design pattern: &lt;button&gt; element</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link rel="stylesheet" type="text/css" href="css/button.css" />
+</head>
+
+<body>
+<h1>Toggle button design pattern: <code>&lt;button&gt;</code> element</h1>
+
+<p>This toggle button is created using the <code>&lt;button&gt;</code> element, with scripting to provide the expected behaviour. Additional semantic information is provided using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a>.</p>
+
+<h2>Example</h2>
+
+<div class="example">
+<button id="button">Tequila!</button>
+</div>
+
+<h2>Notes</h2>
+
+<p>Keyboard focus and interaction is handled automatically by the browser, and the button can be activated using either the enter or space key.</p>
+
+<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed">aria-pressed</a> attribute is used to indicate the state of the button. It is set to false initially, then scripted to toggle between true/false whenever the button is activated.</p>
+
+<p>The visual appearance of the button when pressed (or not) is hooked onto the aria-pressed attribute using an <a href="http://www.smashingmagazine.com/2013/08/20/semantic-css-with-intelligent-selectors/">intelligent CSS selector</a>, instead of a class name. Although this does not affect accessibility, it creates a cleaner separation between structure and design.</p>
+
+<script type="text/javascript" src="js/button.js"></script>
+</body>
+</html>
