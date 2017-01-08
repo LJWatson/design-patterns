@@ -13,22 +13,12 @@ body {
 }
 
 h1, h2, h3 {
-    font: normal 170%/100% Garamond, "Times New Roman", serif;
     margin-bottom: 0;
-    color: 630;
     background: transparent;
 }
 
 h1 {
     padding: 0.2em;
-}
-
-h2 {
-    font: normal 150%/100% Garamond, "Times New Roman", serif;
-}
-
-h3 {
-    font: normal 140%/120% Garamond, "Times New Roman", serif;
 }
 
 a {
@@ -52,6 +42,11 @@ img {
 
 code {
     font: bold "Courier new", Courier, Monospace;
+}
+
+mark {
+	color: #fff;
+	background-color: #820bbb;
 }
 
 .example {
