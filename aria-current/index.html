@@ -11,8 +11,11 @@
 <style>
 [aria-current] {
 font-weight: bold;
-color: #ffffff;
-background-color: #820bbb;
+background-color: #cc33ff;
+}
+
+.time {
+width: 200px;
 }
 </style>
 </head>
@@ -21,103 +24,6 @@ background-color: #820bbb;
 <h1><code>aria-current</code> design patterns</h1>
 
 <p>The <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-current"><code>aria-current</code></a> attribute indicates the element that represents the current item within  a container or set of related elements. It is an enumerated type attribute that takes one of a number of predefined tokens ("page", "step", "location", "date" or "time"), or which may be set to "true".</p>
-
-<h2><code>aria-current="true"</code></h2>
-
-<p>Screen readers should announce "Current" to indicate the first link is the current link in the set.</p>
-
-<h3>Code</h3>
-<pre><code>
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="/" aria-current="true"&gt;Apples&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;Bananas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;Cherries&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<h3>Example</h3>
-<div class="example">
-<ul>
-<li><a href="/" aria-current="true">Apples</a></li>
-<li><a href="/">Bananas</a></li>
-<li><a href="/">Cherries</a></li>
-</ul>
-</div>
-
-<h2><code>aria-current="page"</code></h2>
-
-<p>Screen readers should announce "Current page" to indicate the first link is the current page in the navigation.</p>
-
-<h3>Code</h3>
-<pre><code>
-&lt;nav&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="/" <mark>aria-current="page"</mark>&gt;Home&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;About&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
-
-<h3>Example</h3>
-<div class="example">
-<nav>
-<ul>
-<li><a href="/" aria-current="page">Home</a></li>
-<li><a href="/">About</a></li>
-<li><a href="/">Contact</a></li>
-</ul>
-</nav>
-</div>
-
-<h2><code>aria-current="step"</code></h2>
-
-<p>Screen readers should announce "Current step" to indicate the first link is the current step in the process.</p>
-
-<h3>Code</h3>
-<pre><code>
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="/" <mark>aria-current="step"</mark>&gt;Do this&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;Do that&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt;Do the other&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
-
-<h3>Example</h3>
-<div class="example">
-<ol>
-<li><a href="/" aria-current="step">Do this</a></li>
-<li><a href="/">Do that</a></li>
-<li><a href="/">Do the other</a></li>
-</ol>
-</div>
-
-<h2>aria-current="location"</h2>
-
-<p>Screen readers should announce "Current location" to indicate the last link is the current location in the breadcrumb navigation.</p>
-
-<h3>Code</h3>
-<pre><code>
-&lt;nav aria-label="Breadcrumb"&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/"&gt; Contact us&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/" <mark>aria-current="location"</mark>&gt; Phone numbers&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
-</div>
-
-<h3>Example</h3>
-<div class="example">
-<nav aria-label="Breadcrumb">
-<ul>
-<li><a href="/">Home</a></li>
-<li><a href="/"> Contact us</a></li>
-<li><a href="/" aria-current="location"> Phone numbers</a></li>
-</ul>
-</nav>
-</div>
 
 <h2><code>aria-current="date"</code></h2>
 
@@ -179,6 +85,81 @@ background-color: #820bbb;
 </table>
 </div>
 
+<h2>aria-current="location"</h2>
+
+<p>Screen readers should announce "Current location" to indicate the last link is the current location in the breadcrumb navigation.</p>
+
+<h3>Code</h3>
+<pre><code>
+&lt;nav aria-label="Breadcrumb"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt; Contact us&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/" <mark>aria-current="location"</mark>&gt; Phone numbers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+</div>
+
+<h3>Example</h3>
+<div class="example">
+<nav aria-label="Breadcrumb">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/"> Contact us</a></li>
+<li><a href="/" aria-current="location"> Phone numbers</a></li>
+</ul>
+</nav>
+</div>
+
+<h2><code>aria-current="page"</code></h2>
+
+<p>Screen readers should announce "Current page" to indicate the first link is the current page in the navigation.</p>
+
+<h3>Code</h3>
+<pre><code>
+&lt;nav&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/" <mark>aria-current="page"</mark>&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;About&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<h3>Example</h3>
+<div class="example">
+<nav>
+<ul>
+<li><a href="/" aria-current="page">Home</a></li>
+<li><a href="/">About</a></li>
+<li><a href="/">Contact</a></li>
+</ul>
+</nav>
+</div>
+
+<h2><code>aria-current="step"</code></h2>
+
+<p>Screen readers should announce "Current step" to indicate the first link is the current step in the process.</p>
+
+<h3>Code</h3>
+<pre><code>
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="/" <mark>aria-current="step"</mark>&gt;Do this&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;Do that&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;Do the other&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<h3>Example</h3>
+<div class="example">
+<ol>
+<li><a href="/" aria-current="step">Do this</a></li>
+<li><a href="/">Do that</a></li>
+<li><a href="/">Do the other</a></li>
+</ol>
+</div>
+
 <h2><code>aria-current="time"</code></h2>
 
 <p>Screen readers should announce "Current time" to indicate the keynote is happening at the current time in the schedule.</p>
@@ -187,7 +168,7 @@ background-color: #820bbb;
 <pre><code>
 &lt;ul&gt;
 &lt;li&gt;9am to 10am: Welcome&lt;/li&gt;
-&lt;li&gt;&lt;span <mark>aria-current="time"</mark>&gt;10am to 11am: Keynote&lt;/span&gt;&lt;/li&gt;
+&lt;li <mark>aria-current="time"</mark>&gt;10am to 11am: Keynote&lt;/li&gt;
 &lt;li&gt;11am to 11.30pm: Break&lt;/li&gt;
 &lt;li&gt;11.30am to 1pm: Workshop&lt;/li&gt;
 &lt;li&gt;1pm to 2pm: Lunch&lt;/li&gt;
@@ -199,9 +180,9 @@ background-color: #820bbb;
 
 <h3>Example</h3>
 <div class="example">
-<ul>
+<ul class="time">
 <li>9am to 10am: Welcome</li>
-<li><span aria-current="time">10am to 11am: Keynote</span></li>
+<li aria-current="time">10am to 11am: Keynote</li>
 <li>11am to 11.30pm: Break</li>
 <li>11.30am to 1pm: Workshop</li>
 <li>1pm to 2pm: Lunch</li>
@@ -211,5 +192,37 @@ background-color: #820bbb;
 </ul>
 </div>
 
+<h2><code>aria-current="true"</code></h2>
+
+<p>Screen readers should announce "Current" to indicate the first link is the current link in the set.</p>
+
+<h3>Code</h3>
+<pre><code>
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/" aria-current="true"&gt;Apples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;Bananas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/"&gt;Cherries&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3>Example</h3>
+<div class="example">
+<ul>
+<li><a href="/" aria-current="true">Apples</a></li>
+<li><a href="/">Bananas</a></li>
+<li><a href="/">Cherries</a></li>
+</ul>
+</div>
+
+
+<h2>Screen reader demos</h2>
+<ul>
+<li><a href="https://youtu.be/nr1RuyIiHi0">Screen reader demo: aria-current="date"</a></li>
+<li><a href="	https://youtu.be/o1FyUaaK8hk">Screen reader demo: aria-current="location"</a></li>
+<li><a href="https://www.youtube.com/watch?v=as2CZKc4Kx4">Screen reader demo: aria-current="page"</a></li>
+<li><a href="https://youtu.be/BxSzMuHXrPg">Screen reader demo: aria-current="step"</a></li>
+<li><a href="https://youtu.be/PH6qIazMNgY">Screen reader demo: aria-current="time"</a></li>
+<li><a href="https://youtu.be/f3tNnqSW3VM">Screen reader demo: aria-current="true"</a></li>
+</ul>
 </body>
 </html>
