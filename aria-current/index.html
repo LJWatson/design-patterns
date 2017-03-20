@@ -17,6 +17,19 @@ background-color: #cc33ff;
 .time {
 width: 200px;
 }
+
+.support, .support th, .support td {
+border-collapse: collapse;
+border:1px solid #bbb;
+}
+.support th, .support td {
+text-align:center;
+padding: .2em;
+}
+.support th:nth-child(1) {
+text-align: right;
+}
+
 </style>
 </head>
 
@@ -217,7 +230,7 @@ width: 200px;
 
 <h2>Screen reader support</h2>
 
-<table>
+<table class="support">
 <caption>Screen reader support for aria-current</caption>
 <tr>
 <th></th><th><code>=date"</code></th><th><code>="location"</code></th><th><code>="page"</code></th><th><code>="step"</code></th><th><code>="time"</code></th><th><code>="true"</code></th>
