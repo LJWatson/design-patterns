@@ -32,7 +32,7 @@
 
 <p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls"><code>aria-controls</code></a> attribute is used to create a relationship between the <code>&lt;button&gt;</code> and the <code>&lt;div&gt;</code> that contains the content. It takes the idref of the <code>&lt;div&gt;</code> as its value. This enables assistive technologies to provide specific commands for moving focus from the <code>&lt;button&gt;</code> to the <code>&lt;div&gt;</code>.</p>
 
-<p>The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden</code></a> attribute indicates the state of the <code>&lt;div&gt;</code> containing the content. It is used regardless of the method used to toggle the content&#39;s visibility. The <code>aria-hidden</code> attribute is set to true (hidden) initially, then scripted to toggle between false and true whenever the button is activated.</p>
+<p>The <a href="http://w3c.github.io/html/editing.html#the-hidden-attribute"><code>hidden</code></a> attribute indicates the state of the <code>&lt;div&gt;</code> containing the content. It is used to hide the content both visually and from assistive technologies. The <code>hidden</code> attribute is added initially, then scripted to be added or removed whenever the button is activated.</p>
 
 <p>The visible style of the <code>&lt;button&gt;</code> when pressed is hooked to the <code>aria-expanded</code> attribute. Similarly the visibility of the <code>&lt;div&gt;</code> is hooked to the <code>hidden</code> attribute.</p>
 
