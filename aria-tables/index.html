@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ARIA tables test case</title>
+
+<link rel="stylesheet" type="text/css" href="../css/basic.css">
+</head>
+
+<body>
+<h1>ARIA tables test case</h1>
+
+<p>The ARIA <code><a href="https://www.w3.org/TR/wai-aria-1.1/#table">table</a></code>, <code><a href="https://www.w3.org/TR/wai-aria-1.1/#columnheader">columnheader</a></code>, <code><a href="https://www.w3.org/TR/wai-aria-1.1/#rowheader">rowheader</a></code>, <code><a href="https://www.w3.org/TR/wai-aria-1.1/#row">row</a></code>, and <code><a href="https://www.w3.org/TR/wai-aria-1.1/#cell">cell</a></code> roles, can be used to polyfill native HTML table semantics.</p>
+
+<p>A screen reader should recognise the structure as a table and indicate how many rows and columns it contains. It should be possible to navigate through the table using the standard commands for each screen reader, and for the appropriate row or column headers to be announced as focus moves between table cells.</p>
+
+<div class="example">
+<p>Thanks to <a href="https://twitter.com/shepazu">Doug Scheppers</a> for the original table SVG.</p>
+
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" height="100%" viewBox="0 0 370 280">>
+<title>SVG Tables using ARIA</title>
+
+<g id='rowGroup' transform='translate(0, 150)' role="table">
+<rect x='25' y='40' width='310' height='20' fill='gainsboro'/>
+<rect x='25' y='76' width='310' height='20' fill='gainsboro'/>
+
+<text x='30' y='30' font-size='18px' font-weight='bold' fill='crimson' text-anchor='middle' role="row">
+<tspan id="sales" role="columnheader" x='100'>Sales</tspan>
+<tspan id="expenses" role="columnheader" x='200'>Expenses</tspan>
+<tspan id="net" role="columnheader" x='300'>Net</tspan>
+</text>
+
+<text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
+<tspan id="q1" role="rowheader" x='30' dy='1.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q1</tspan>
+<tspan aria-labelledby="sales q1" role="cell" x='100'>$ 223</tspan>
+<tspan aria-labelledby="expenses q1" role="cell" x='200'>$ 195</tspan>
+<tspan aria-labelledby="net q1" role="cell" x='300'>$ 28</tspan>
+</text>
+
+<text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
+<tspan id="q2" role="rowheader" x='30' dy='2.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q2</tspan>
+<tspan aria-labelledby="sales q2" role="cell" x='100'>$ 183</tspan>
+<tspan aria-labelledby="expenses q2" role="cell" x='200'>$ 70</tspan>
+<tspan aria-labelledby="net q2" role="cell" x='300'>$ 113</tspan>
+</text>
+
+<text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
+<tspan id="q3" role="rowheader" x='30' dy='3.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q3</tspan>
+<tspan aria-labelledby="sales q3" role="cell" x='100'>$ 277</tspan>
+<tspan aria-labelledby="expenses q3" role="cell" x='200'>$ 88</tspan>
+<tspan aria-labelledby="net q3" role="cell" x='300'>$ 189</tspan>
+</text>
+
+<text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
+<tspan id="q4" role="rowheader" x='30' dy='4.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q4</tspan>
+<tspan aria-labelledby="sales q4" role="cell" x='100'>$ 402</tspan>
+<tspan aria-labelledby="expenses q4" role="cell" x='200'>$ 133</tspan>
+<tspan aria-labelledby="net q4" role="cell" x='300'>$ 269</tspan>
+</text>
+</g>
+</svg>
+</div>
+
+<h2>Screen reader support</h2>
+
+<p>Thanks to <a href="https://twitter.com/aardrian/">Adrian Roselli</a> for help testing on Android.</p>
+
+<table>
+<caption>Screen reader support for ARIA tables</caption>
+
+<tr>
+<th></th><th>table</th><th>columnheader</th><th>rowheader</th><th>row/column</th><th>Notes</th>
+</tr>
+
+<tr>
+<th>Jaws/Chrome</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>Jaws/Firefox</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>Jaws/IE</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>Narrator/Edge</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Narrator needs to be in scan mode.</td>
+</tr>
+
+<tr>
+<th>Narrator/IE</th><td>No</td><td>No</td><td>No</td><td>No</td><td></td>
+</tr>
+
+<tr>
+<th>NVDA/Edge</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>NVDA/Chrome</th><td>Part</td><td>No</td><td>No</td><td>No</td><td>Table is recognised but reported as "0 rows, 0 columns".</td>
+</tr>
+
+<tr>
+<th>NVDA/Firefox</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>NVDA/IE</th><td>No</td><td>No</td><td>No</td><td>No</td><td></td>
+</tr>
+
+<tr>
+<th>Talkback/Chrome</th><td>Part</td><td>Yes</td><td>N/A</td><td>Part</td><td>Table is recognised, but reported as "4 columns, 0 rows".
+<br>
+Talkback doesn't support row navigation.</td>
+</tr>
+
+<tr>
+<th>TalkBack/Firefox</th><td>Yes</td><td>Yes</td><td>N/A</td><td>Part</td><td>Talkback doesn't support row navigation</td>
+</tr>
+
+<tr>
+<th>Voiceover/Safari (iOS)</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+
+<tr>
+<th>VoiceOver/Safari (MacOS)</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td>
+</tr>
+</table>
+
+</body>
+</html>
