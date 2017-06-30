@@ -18,7 +18,7 @@
 <p>A screen reader should recognise the structure as a table and indicate how many rows and columns it contains. It should be possible to navigate through the table using the standard commands for each screen reader, and for the appropriate row or column headers to be announced as focus moves between table cells.</p>
 
 <div class="example">
-<p>Thanks to <a href="https://twitter.com/shepazu">Doug Scheppers</a> for the original table SVG.</p>
+<p>Thanks to <a href="https://twitter.com/shepazu">Doug Scheppers</a> for the original SVG.</p>
 
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" height="100%" viewBox="0 0 370 280">>
 <title>SVG Tables using ARIA</title>
@@ -28,37 +28,37 @@
 <rect x='25' y='76' width='310' height='20' fill='gainsboro'/>
 
 <text x='30' y='30' font-size='18px' font-weight='bold' fill='crimson' text-anchor='middle' role="row">
-<tspan id="sales" role="columnheader" x='100'>Sales</tspan>
-<tspan id="expenses" role="columnheader" x='200'>Expenses</tspan>
-<tspan id="net" role="columnheader" x='300'>Net</tspan>
+<tspan role="columnheader" x='100'>Sales</tspan>
+<tspan  role="columnheader" x='200'>Expenses</tspan>
+<tspan role="columnheader" x='300'>Net</tspan>
 </text>
 
 <text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
-<tspan id="q1" role="rowheader" x='30' dy='1.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q1</tspan>
-<tspan aria-labelledby="sales q1" role="cell" x='100'>$ 223</tspan>
-<tspan aria-labelledby="expenses q1" role="cell" x='200'>$ 195</tspan>
-<tspan aria-labelledby="net q1" role="cell" x='300'>$ 28</tspan>
+<tspan role="rowheader" x='30' dy='1.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q1</tspan>
+<tspan role="cell" x='100'>$ 223</tspan>
+<tspan role="cell" x='200'>$ 195</tspan>
+<tspan role="cell" x='300'>$ 28</tspan>
 </text>
 
 <text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
-<tspan id="q2" role="rowheader" x='30' dy='2.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q2</tspan>
-<tspan aria-labelledby="sales q2" role="cell" x='100'>$ 183</tspan>
-<tspan aria-labelledby="expenses q2" role="cell" x='200'>$ 70</tspan>
-<tspan aria-labelledby="net q2" role="cell" x='300'>$ 113</tspan>
+<tspan role="rowheader" x='30' dy='2.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q2</tspan>
+<tspan role="cell" x='100'>$ 183</tspan>
+<tspan role="cell" x='200'>$ 70</tspan>
+<tspan role="cell" x='300'>$ 113</tspan>
 </text>
 
 <text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
-<tspan id="q3" role="rowheader" x='30' dy='3.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q3</tspan>
-<tspan aria-labelledby="sales q3" role="cell" x='100'>$ 277</tspan>
-<tspan aria-labelledby="expenses q3" role="cell" x='200'>$ 88</tspan>
-<tspan aria-labelledby="net q3" role="cell" x='300'>$ 189</tspan>
+<tspan role="rowheader" x='30' dy='3.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q3</tspan>
+<tspan role="cell" x='100'>$ 277</tspan>
+<tspan role="cell" x='200'>$ 88</tspan>
+<tspan role="cell" x='300'>$ 189</tspan>
 </text>
 
 <text x='30' y='30' font-size='18px' text-anchor='middle' role="row">
 <tspan id="q4" role="rowheader" x='30' dy='4.5em' font-weight='bold' fill='crimson' text-anchor='start'>Q4</tspan>
-<tspan aria-labelledby="sales q4" role="cell" x='100'>$ 402</tspan>
-<tspan aria-labelledby="expenses q4" role="cell" x='200'>$ 133</tspan>
-<tspan aria-labelledby="net q4" role="cell" x='300'>$ 269</tspan>
+<tspan role="cell" x='100'>$ 402</tspan>
+<tspan role="cell" x='200'>$ 133</tspan>
+<tspan role="cell" x='300'>$ 269</tspan>
 </text>
 </g>
 </svg>
